@@ -1,6 +1,7 @@
 defmodule Solution do
   @moduledoc """
   1. Two Sum
+  https://leetcode.com/problems/two-sum/submissions/
 
   Given an array of integers nums and an integer target, return indices
   of the two numbers such that they add up to target.
@@ -62,7 +63,7 @@ case System.argv() do
     defmodule SolutionTest do
       use ExUnit.Case
 
-      test "tests according to the test data from assessment" do
+      test "Solution.two_sum/2" do
         assert Solution.two_sum([2, 7, 11, 15], 9) == [0, 1]
         assert Solution.two_sum([3, 2, 4], 6) == [1, 2]
         assert Solution.two_sum([3, 3], 6) == [0, 1]
