@@ -32,12 +32,11 @@ defmodule Solution do
 
   @spec single_number(array :: [non_neg_integer()]) :: non_neg_integer()
   def single_number(array) do
-    Enum.reduce(array, %{}, fn item, acc ->
-      Map.update(acc, item, 1, &(&1 + 1))
-    end)
-    |> Enum.reduce_while(0, fn
-      {result, 1}, acc -> {:halt, acc + result}
-      _, acc -> {:cont, acc}
+    array
+    |> Enum.frequencies()
+    |> Enum.find_value(fn
+      {result, 1} -> result
+      _ -> false
     end)
   end
 end
