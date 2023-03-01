@@ -33,25 +33,14 @@ defmodule Solution do
   Output: [0,1]
   """
 
-  @spec two_sum(
-          list_of_numbers :: [non_neg_integer()],
-          target :: non_neg_integer()
-        ) :: [non_neg_integer()]
-  def two_sum(list_of_numbers, target) do
-    Enum.reduce_while(list_of_numbers, [%{}, 0], fn
-      number, [map, index_counter] when map == %{} ->
-        {:cont, [Map.put(map, number, index_counter), index_counter]}
+  @spec two_sum(nums :: [integer], target :: integer) :: [integer]
+  def two_sum(nums, target) do
+    Enum.reduce_while(nums, {%{}, 0}, fn num, {acc, index} ->
+      expected_number = acc[target - num]
 
-      number, [map, index_counter] ->
-        expected_number = target - number
-
-        case map[expected_number] do
-          nil ->
-            {:cont, [Map.put(map, number, index_counter + 1), index_counter + 1]}
-
-          first_index ->
-            {:halt, [first_index, index_counter + 1]}
-        end
+      if expected_number,
+        do: {:halt, [expected_number, index]},
+        else: {:cont, {Map.put(acc, num, index), index + 1}}
     end)
   end
 end
