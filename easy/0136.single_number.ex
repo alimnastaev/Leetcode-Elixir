@@ -48,7 +48,7 @@ case System.argv() do
     defmodule SolutionTest do
       use ExUnit.Case
 
-      test "Solution.two_sum/2" do
+      test "Solution.single_number/1" do
         assert Solution.single_number([2, 2, 1]) == 1
         assert Solution.single_number([4, 1, 2, 1, 2]) == 4
         assert Solution.single_number([1]) == 1
